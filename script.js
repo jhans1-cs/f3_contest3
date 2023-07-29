@@ -14,12 +14,19 @@ function generateAccessToken() {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
   
     // Validate if all fields are filled
     if (username.trim() === '' || email.trim() === '' || password.trim() === '') {
       document.getElementById('signupMessage').textContent = 'Please fill all fields.';
       return;
     }
+
+  // Validate if password and confirm password match
+  if (password !== confirmPassword) {
+    document.getElementById('signupMessage').textContent = 'Passwords do not match.'; // Error message
+    return;
+  }
   
     // Generate and store access token in local storage
     const accessToken = generateAccessToken();
